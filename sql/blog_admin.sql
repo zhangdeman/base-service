@@ -1,0 +1,3 @@
+CREATE TABLE zdm_admin(
+  `id` BIGINT NOT NULL DEFAULT 0 COMMENT '主键id'
+);
