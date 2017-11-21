@@ -22,4 +22,9 @@ Route::post('/test', function (Request $request) {
     $instance->testInterface($request);
 });
 
+Route::get('/getId', function (Request $request) {
+    $instance = new \App\Http\Controllers\Common\GetId();
+    $instance->getUniqueId($request);
+});
+
 
