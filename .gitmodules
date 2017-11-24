@@ -1,3 +1,6 @@
 [submodule "themis"]
 	path = themis
 	url = https://github.com/zhangdeman/themis.git
+[submodule "wiki"]
+	path = wiki
+	url = https://github.com/zhangdeman/aliyun-wiki
