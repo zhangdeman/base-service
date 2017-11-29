@@ -6,11 +6,17 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Themis\Api\Out;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * 输出成功的信息
+     * @param $data
+     * @param bool $isQuit
+     */
     public function success($data, $isQuit = true)
     {
         $returnData = array(
@@ -27,6 +33,25 @@ class Controller extends BaseController
         fastcgi_finish_request();
     }
 
+    /**
+     * 输出错误信息
+     * @param $errorCode
+     * @param string $errorMsg
+     * @param array $errorData
+     * @param bool $isQuit
+     */
     public function error($errorCode, $errorMsg = '', $errorData = array(), $isQuit = true)
-    {}
+    {
+        $errorMsg = empty($errorMsg) ? Out::getErrorMsg($errorCode) : $errorMsg;
+        $outData = array(
+            'error_code'    =>  $errorCode,
+            'error_msg'     =>  $errorMsg,
+            'data'          =>  $errorData
+        );
+        echo json_encode($outData);
+        if ($isQuit) {
+            exit(0);
+        }
+        fastcgi_finish_request();
+    }
 }

@@ -10,12 +10,19 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use App\Library\IdWorker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class GetId extends Controller
 {
     public function getUniqueId(Request $request)
     {
         $id = IdWorker::generateId();
-        $this->success(array('id' => $id));
+        $idInfo = array(
+            'id'    =>  $id,
+            'time'  =>  time(),
+            'ip'    =>  $request->input('request_ip')
+        );
+        $encodeId = encrypt($idInfo);
+        $this->success(array('id' => $id, 'encode_id' => $encodeId));
     }
 }

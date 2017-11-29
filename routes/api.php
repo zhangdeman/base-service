@@ -27,4 +27,9 @@ Route::get('/getId', function (Request $request) {
     $instance->getUniqueId($request);
 });
 
+Route::post('/admin/addAdmin', function (Request $request) {
+    $instance = new \App\Http\Controllers\Admin\Add();
+    $instance->addAdmin($request);
+});
+
 
