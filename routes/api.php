@@ -32,4 +32,9 @@ Route::post('/admin/addAdmin', function (Request $request) {
     $instance->addAdmin($request);
 });
 
+Route::post('/admin/login', function (Request $request) {
+    $instance = new \App\Http\Controllers\Admin\Login();
+    $instance->doLogin($request);
+});
+
 

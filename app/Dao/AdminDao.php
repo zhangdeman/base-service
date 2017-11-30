@@ -57,6 +57,28 @@ class AdminDao extends BaseDao
     }
 
     /**
+     * 通过管理员ID获取管理员信息
+     * @param $adminPhone 管理员ID
+     * @return array
+     */
+    public static function getAdminByPhone($adminPhone)
+    {
+        $result = DB::table(self::TABLE)->where('phone', '=', $adminPhone)->first();
+        return $result;
+    }
+
+    /**
+     * 通过管理员邮箱获取管理员信息
+     * @param $adminMail 管理员ID
+     * @return array
+     */
+    public static function getAdminByMail($adminMail)
+    {
+        $result = DB::table(self::TABLE)->where('mail', '=', $adminMail)->first();
+        return $result;
+    }
+
+    /**
      * 定义admin表结构
      * @return array
      */
