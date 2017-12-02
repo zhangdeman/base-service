@@ -37,4 +37,9 @@ Route::post('/admin/login', function (Request $request) {
     $instance->doLogin($request);
 });
 
+Route::get('/article/getArticleKind', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\Kind();
+    $instance->getArticleKind($request);
+});
+
 
