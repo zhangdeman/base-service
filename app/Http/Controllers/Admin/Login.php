@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Dao\AdminDao;
 use Themis\Admin\Admin;
 use Themis\Api\Out;
+use App\Library\Token;
 
 class Login extends Controller
 {
@@ -29,6 +30,7 @@ class Login extends Controller
         $loginType = $request->input('login_type'); //登录方式
         $account = $request->input('account');  //账号
         $password = $request->input('password');   //密码
+        $loginIp = $request->input('login_ip');
 
         if ($loginType == Admin::LOGIN_TYPE_PHONE) {
             $adminInfo = AdminDao::getAdminByPhone($account);
@@ -45,7 +47,9 @@ class Login extends Controller
             $this->error(Out::ERROR_ADMIN_ACCOUNT_NO_MATCH, Out::getErrorMsg(Out::ERROR_ADMIN_ACCOUNT_NO_MATCH), $adminInfo);
         }
 
-        $this->success($adminInfo);
+        $loginToken = Token::genToken($adminInfo, $loginIp);
+
+        $this->success(array('token' => $loginToken));
     }
 
     /**

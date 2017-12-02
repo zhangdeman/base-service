@@ -10,7 +10,6 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use App\Library\IdWorker;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 
 class GetId extends Controller
 {
