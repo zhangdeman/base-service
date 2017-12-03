@@ -25,8 +25,7 @@ class Token extends Controller
     public function validateToken(Request $request)
     {
         $token = $request->input('token');
-        $tokenInfo = decrypt($token);
-        if (empty($tokenInfo)) {
+        if (empty($token) || empty($tokenInfo = decrypt($token))) {
             //token校验失败
             $this->error(Out::ERROR_EXCEPTION_TOKEN);
         }
