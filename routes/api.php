@@ -22,6 +22,11 @@ Route::post('/test', function (Request $request) {
     $instance->testInterface($request);
 });
 
+Route::post('/passport/validateToken', function (Request $request) {
+    $instance = new \App\Http\Controllers\Admin\Token();
+    $instance->validateToken($request);
+});
+
 Route::get('/getId', function (Request $request) {
     $instance = new \App\Http\Controllers\Common\GetId();
     $instance->getUniqueId($request);
