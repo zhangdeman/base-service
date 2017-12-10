@@ -47,7 +47,7 @@ Route::get('/article/getArticleKind', function (Request $request) {
     $instance->getArticleKind($request);
 });
 
-Route::get('/article/addArticle', function (Request $request) {
+Route::post('/article/addArticle', function (Request $request) {
     $instance = new \App\Http\Controllers\Article\AddArticle();
     $instance->createArticle($request);
 });
