@@ -52,4 +52,9 @@ Route::get('/article/addArticle', function (Request $request) {
     $instance->createArticle($request);
 });
 
+Route::get('/article/getArticleList', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\GetArticleList();
+    $instance->getList($request);
+});
+
 
