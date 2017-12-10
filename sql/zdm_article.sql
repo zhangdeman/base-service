@@ -3,6 +3,7 @@ CREATE TABLE `zdm_article` (
   `admin_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '管理员ID',
   `status` TINYINT NOT NULL DEFAULT 0 COMMENT '0 - 正常 1 - 审核中 2 - 删除 3 - 举报',
   `html_content` TEXT NOT NULL DEFAULT '' COMMENT '带格式的文章内容',
+  `title` VARCHAR(256) NOT NULL DEFAULT '' COMMENT '文章标题',
   `text_content` TEXT NOT NULL DEFAULT '' COMMENT '纯文本文章内容',
   `parent_kind` TINYINT NOT NULL DEFAULT 0 COMMENT '父级分类',
   `son_kind`  INT(6) NOT NULL DEFAULT 0 COMMENT '子分类',

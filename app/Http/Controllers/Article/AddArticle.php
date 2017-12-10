@@ -21,6 +21,7 @@ class AddArticle extends Controller
     {
         $data = array(
             'id'        =>  $request->input('id'),
+            'title'     =>  $request->input('title'),
             'admin_id'  =>  $request->input('admin_id'),
             'create_ip' =>  $request->input('create_ip'),
             'html_content'=>  $request->input('plain_content'),
