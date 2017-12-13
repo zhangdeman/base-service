@@ -57,4 +57,9 @@ Route::get('/article/getArticleList', function (Request $request) {
     $instance->getList($request);
 });
 
+Route::get('/article/getArticleDetail', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\GetArticleDetail();
+    $instance->getArticle($request);
+});
+
 
