@@ -27,11 +27,11 @@ class GetArticleList extends Controller
         $articleSonType = $request->input('son_type', null);
         $where = array();
         if (!is_null($articleParentType)) {
-            $where['parent_type'] = $articleParentType;
+            $where['parent_kind'] = $articleParentType;
         }
 
         if (!is_null($articleSonType)) {
-            $where['son_type'] = $articleSonType;
+            $where['son_kind'] = $articleSonType;
         }
 
         $orderField = $request->input('order_field', 'create_time');
