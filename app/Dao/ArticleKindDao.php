@@ -6,6 +6,7 @@
  * Time: 23:56
  */
 namespace App\Dao;
+use App\Library\MyLog;
 use DB;
 use Themis\Article\ArticleKind;
 
@@ -116,5 +117,43 @@ class ArticleKindDao extends BaseDao
             'db_time'   =>  time(),
         );
         return DB::table(self::TABLE)->insert($kindData);
+    }
+
+    /**
+     * 获取文章列表
+     * @param $where
+     * @param $limit
+     * @param $offset
+     */
+    public static function getArticleKindList($where, $limit, $offset, $orderField, $orderRule)
+    {
+        //$dbInstance = DB::table(self::TABLE);
+        /*foreach ($where as $field => $value) {
+            if (is_array($value)) {
+                $dbInstance->whereIn($field, $value);
+            } else {
+                $dbInstance->where($field, '=', $value);
+            }
+        }*/
+        $list = DB::table(self::TABLE)->where($where)->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
+        return $list;
+    }
+
+    /**
+     * 获取文章数量
+     * @param $where
+     */
+    public static function getArticleKindCount($where)
+    {
+        $dbInstance = DB::table(self::TABLE);
+        foreach ($where as $field => $value) {
+            if (is_array($value)) {
+                $dbInstance->whereIn($field, $value);
+            } else {
+                $dbInstance->where($field, '=', $value);
+            }
+        }
+        $count = $dbInstance->count();
+        return $count;
     }
 }

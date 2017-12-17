@@ -66,3 +66,8 @@ Route::post('/articleKind/add', function (Request $request) {
     $instance = new \App\Http\Controllers\Article\Kind();
     $instance->addArticleKind($request);
 });
+
+Route::get('/articleKind/list', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\GetArticleKindList();
+    $instance->getList($request);
+});
