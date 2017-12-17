@@ -27,4 +27,18 @@ class Kind extends Controller
         $kindList = ArticleKindDao::getArticleKind();
         $this->success($kindList);
     }
+
+    /**
+     * 添加文章分类
+     * @param Request $request
+     */
+    public function addArticleKind(Request $request)
+    {
+        $result = ArticleKindDao::addArticleKind($request->all());
+        if ($result) {
+            $this->success(array('id' => $request->input('id')));
+        } else {
+            $this->error(Out::ERROR_ADD_ARTICLE_KIND_FIAL);
+        }
+    }
 }

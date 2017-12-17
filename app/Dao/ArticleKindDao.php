@@ -7,6 +7,7 @@
  */
 namespace App\Dao;
 use DB;
+use Themis\Article\ArticleKind;
 
 class ArticleKindDao extends BaseDao
 {
@@ -80,5 +81,40 @@ class ArticleKindDao extends BaseDao
             ),
         );
         return $kindList;
+    }
+
+    /**
+     * 通过ID获取类别信息
+     * @param $kindId 类别ID
+     * @return mixed
+     */
+    public static function getArticleKindById($kindId)
+    {
+        $result = DB::table(self::TABLE)->where('id', '=', $kindId)->first();
+        return $result;
+    }
+
+    /**
+     * 添加文章类别
+     * @param $data
+     * @return mixed
+     */
+    public static function addArticleKind($data)
+    {
+        $id = $data['id'];
+        $exist = self::getArticleKindById($id);
+        if ($exist) {
+            return $id;
+        }
+        $kindData = array(
+            'id'    =>  $data['id'],
+            'create_admin_id'   =>  $data['create_admin_id'],
+            'title' =>  $data['title'],
+            'status' => ArticleKind::KIND_STATUS_NORMAL,
+            'parent_id' => $data['parent_id'],
+            'create_time' => time(),
+            'db_time'   =>  time(),
+        );
+        return DB::table(self::TABLE)->insert($kindData);
     }
 }
