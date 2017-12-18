@@ -36,7 +36,7 @@ class GetArticleKindList extends Controller
         $articleCount = ArticleKindDao::getArticleKindCount($where);
         $totalPage = ceil($articleCount / $pageSize);
         $returnData = array(
-            'article_Kind_list' => $list,
+            'article_kind_list' => $list,
             'total_page' => $totalPage,
             'current_page' => $currentPage,
             'page_limit' => $pageSize,
