@@ -71,3 +71,8 @@ Route::get('/articleKind/list', function (Request $request) {
     $instance = new \App\Http\Controllers\Article\GetArticleKindList();
     $instance->getList($request);
 });
+
+Route::get('/articleKind/detail', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\GetArticleKindDetail();
+    $instance->detail($request);
+});
