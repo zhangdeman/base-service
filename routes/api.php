@@ -76,3 +76,13 @@ Route::get('/articleKind/detail', function (Request $request) {
     $instance = new \App\Http\Controllers\Article\GetArticleKindDetail();
     $instance->detail($request);
 });
+
+Route::post('/articleKind/update', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\UpdateArticleKind();
+    $instance->update($request);
+});
+
+Route::post('/articleKind/delete', function (Request $request) {
+    $instance = new \App\Http\Controllers\Article\DeleteArticleKind();
+    $instance->delete($request);
+});

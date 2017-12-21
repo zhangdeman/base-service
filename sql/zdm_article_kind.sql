@@ -11,3 +11,4 @@ CREATE TABLE `zdm_article_kind` (
     INDEX `article_kind_create_time` (`create_time`),
     INDEX `article_kind_admin` (`create_admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章类别表';
+alter table zdm_article_kind add column `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT '更新时间';

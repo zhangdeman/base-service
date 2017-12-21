@@ -156,4 +156,17 @@ class ArticleKindDao extends BaseDao
         $count = $dbInstance->count();
         return $count;
     }
+
+    /**
+     * 更新文章类别
+     * @param $id
+     * @param $updateData
+     * @return mixed
+     */
+    public static function updateArticleKindById($id, $updateData)
+    {
+        $updateData['update_time'] = time();
+        $updateResult = DB::table(self::TABLE)->where('id', '=', $id)->update($updateData);
+        return$updateResult;
+    }
 }
