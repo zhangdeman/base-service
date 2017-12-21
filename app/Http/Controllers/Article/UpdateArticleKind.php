@@ -29,9 +29,9 @@ class UpdateArticleKind extends Controller
             $this->error(Out::ERROR_EMPTY_KIND_DETAIL);
         }
 
-        if ($title == $kindDetail['title'] && $parentId == $kindDetail['parent_id']) {
+        if ($title == $kindDetail->title && $parentId == $kindDetail->parent_id) {
             //数据没有变化,直接返回成功
-            $this->success(array('title' => $kindDetail['title'], 'parent_id' => $kindDetail['parent_id']));
+            $this->success(array('title' => $kindDetail->title, 'parent_id' => $kindDetail->parent_id));
         }
 
         $updateData = array(
