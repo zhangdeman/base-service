@@ -86,3 +86,8 @@ Route::post('/articleKind/delete', function (Request $request) {
     $instance = new \App\Http\Controllers\Article\DeleteArticleKind();
     $instance->delete($request);
 });
+
+Route::get('/permission/getList', function (Request $request) {
+    $instance = new \App\Http\Controllers\Permission\GetPermissionList();
+    $instance->getList($request);
+});
