@@ -28,7 +28,8 @@ class AddPermission extends Controller
             'desc'  =>  trim($request->input('desc')),
             'real_controller'   =>  strtolower(trim($request->input('real_controller'))),
             'real_action'       =>  strtolower(trim($request->input('real_action'))),
-            'request_uri'       =>  strtolower(trim($request->input('request_uri')))
+            'request_uri'       =>  strtolower(trim($request->input('request_uri'))),
+            'is_show_left'  => strtolower(trim($request->input('is_show_left'))),
         );
 
         $result = PermissionDao::add($requestData);

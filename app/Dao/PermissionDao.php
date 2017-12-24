@@ -75,7 +75,8 @@ class PermissionDao extends BaseDao
             'real_action'       =>  $data['real_action'],
             'request_uri'       =>  $data['request_uri'],
             'create_time'   =>  time(),
-            'status'    =>  Permission::PERMISSION_STATUS_NORMAL
+            'status'    =>  Permission::PERMISSION_STATUS_NORMAL,
+            'is_show_left' => $data['is_show_left']
         );
 
         $result = DB::table(self::TABLE)->insert($insertData);
