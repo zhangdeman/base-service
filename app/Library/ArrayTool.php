@@ -91,6 +91,9 @@ class ArrayTool
      */
     public static function getFiled($dataSource, $key)
     {
+        if (is_object($dataSource)) {
+            $dataSource = (array)$dataSource;
+        }
         $returnData = array();
         foreach ($dataSource as $item) {
             if (isset($item[$key])) {
