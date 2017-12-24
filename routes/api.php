@@ -96,3 +96,8 @@ Route::post('/permission/add', function (Request $request) {
     $instance = new \App\Http\Controllers\Permission\AddPermission();
     $instance->add($request);
 });
+
+Route::get('/permission/getRolePermission', function (Request $request) {
+    $instance = new \App\Http\Controllers\Permission\GetRolePermission();
+    $instance->getList($request);
+});
