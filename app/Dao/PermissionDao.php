@@ -8,6 +8,7 @@
 
 namespace App\Dao;
 use DB;
+use Themis\Permission\Permission;
 
 class PermissionDao extends BaseDao
 {
@@ -73,7 +74,8 @@ class PermissionDao extends BaseDao
             'real_controller'   =>  $data['real_controller'],
             'real_action'       =>  $data['real_action'],
             'request_uri'       =>  $data['request_uri'],
-            'create_time'   =>  time()
+            'create_time'   =>  time(),
+            'status'    =>  Permission::PERMISSION_STATUS_NORMAL
         );
 
         $result = DB::table(self::TABLE)->insert($insertData);

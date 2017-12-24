@@ -21,7 +21,7 @@ class AddPermission extends Controller
     public function add(Request $request)
     {
         $requestData = array(
-            'id'    =>  $request->input('create_admin_id'),
+            'id'    =>  $request->input('id'),
             'create_admin_id'   =>  $request->input('create_admin_id'),
             'parent_id' =>  trim($request->input('parent_id')),
             'name'  =>  trim($request->input('name')),
