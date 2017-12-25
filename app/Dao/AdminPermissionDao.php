@@ -21,7 +21,11 @@ class AdminPermissionDao extends BaseDao
      */
     public static function getRolePermissionByRoleId($roleId)
     {
-        $list = DB::table(self::TABLE)->where('role_id', '=', $roleId)->get();
+        $where = array(
+            'role_id'   =>  $roleId
+        );
+        $list = DB::table(self::TABLE)->where($where)->get();
+        self::getSql();
         return $list;
     }
 

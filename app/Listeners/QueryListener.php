@@ -54,14 +54,16 @@ class QueryListener
                 $query = vsprintf($query, $sql->bindings);
 
                 // Save the query to file
-                /*$logFile = fopen(
+                $logFile = fopen(
                     storage_path('logs' . DIRECTORY_SEPARATOR . date('Y-m-d') . '_query.log'),
                     'a+'
-                );*/
+                );
+
+                fwrite($logFile, date('Y-m-d H:i:s') . ': ' . $query . PHP_EOL);
+                fclose($logFile);
 
                 MyLog::info($query);
-                //fwrite($logFile, date('Y-m-d H:i:s') . ': ' . $query . PHP_EOL);
-                //fclose($logFile);
+
             }
         );
     }

@@ -50,7 +50,10 @@ class AuthAdminPermission extends Controller
 
         $returnData = array(
             'delete_result' =>  $deleteResult,
-            'add_result'    =>  $addResult
+            'add_result'    =>  $addResult,
+            'current_permission' => $currentPermissionIds,
+            'target_permission' => $permissionIdArr,
+            'role_id'   =>  $roleId
         );
 
         $this->success($returnData);
