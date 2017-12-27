@@ -31,6 +31,11 @@ class GetArticleKindList extends Controller
             $where['parent_id'] = $parentKind;
         }
 
+        $status = $request->input('status', null);
+        if (!is_null($status)) {
+            $where['status'] = $status;
+        }
+
         $orderField = $request->input('order_field', 'create_time');
         $orderRule = $request->input('order_rule', 'DESC');
 
