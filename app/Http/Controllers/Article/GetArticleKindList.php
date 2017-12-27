@@ -19,12 +19,17 @@ class GetArticleKindList extends Controller
     }
 
     /**
-     * 获取文章列表
+     * 获取文章类型列表
      * @param Request $request
      */
     public function getList(Request $request)
     {
         $where = array();
+
+        $parentKind = $request->input('parent_id', null);
+        if (!is_null($parentKind)) {
+            $where['parent_id'] = $parentKind;
+        }
 
         $orderField = $request->input('order_field', 'create_time');
         $orderRule = $request->input('order_rule', 'DESC');

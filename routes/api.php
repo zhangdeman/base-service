@@ -43,8 +43,8 @@ Route::post('/admin/login', function (Request $request) {
 });
 
 Route::get('/article/getArticleKind', function (Request $request) {
-    $instance = new \App\Http\Controllers\Article\Kind();
-    $instance->getArticleKind($request);
+    $instance = new \App\Http\Controllers\Article\GetArticleKindList();
+    $instance->getList($request);
 });
 
 Route::post('/article/addArticle', function (Request $request) {

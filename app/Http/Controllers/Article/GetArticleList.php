@@ -23,8 +23,8 @@ class GetArticleList extends Controller
      */
     public function getList(Request $request)
     {
-        $articleParentType = $request->input('parent_type', null);
-        $articleSonType = $request->input('son_type', null);
+        $articleParentType = $request->input('parent_kind', null);
+        $articleSonType = $request->input('son_kind', null);
         $where = array();
         if (!is_null($articleParentType)) {
             $where['parent_kind'] = $articleParentType;
