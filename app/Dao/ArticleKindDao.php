@@ -127,15 +127,15 @@ class ArticleKindDao extends BaseDao
      */
     public static function getArticleKindList($where, $limit, $offset, $orderField, $orderRule)
     {
-        //$dbInstance = DB::table(self::TABLE);
-        /*foreach ($where as $field => $value) {
+        $dbInstance = DB::table(self::TABLE);
+        foreach ($where as $field => $value) {
             if (is_array($value)) {
                 $dbInstance->whereIn($field, $value);
             } else {
                 $dbInstance->where($field, '=', $value);
             }
-        }*/
-        $list = DB::table(self::TABLE)->where($where)->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
+        }
+        $list = $dbInstance->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
         return $list;
     }
 
