@@ -79,6 +79,48 @@ class AdminDao extends BaseDao
     }
 
     /**
+     * 获取管理员列表
+     * @param $where
+     * @param $limit
+     * @param $offset
+     * @param $orderField
+     * @param $orderRule
+     * @return mixed
+     */
+    public static function getAdminList($where, $limit, $offset, $orderField, $orderRule)
+    {
+        $dbInstance = DB::table(self::TABLE);
+        foreach ($where as $field => $value) {
+            if (is_array($value)) {
+                $dbInstance->whereIn($field, $value);
+            } else {
+                $dbInstance->where($field, '=', $value);
+            }
+        }
+        $list = DB::table(self::TABLE)->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
+        return $list;
+    }
+
+    /**
+     * 获取管理员数量
+     * @param $where
+     * @return mixed
+     */
+    public static function getAdminCount($where)
+    {
+        $dbInstance = DB::table(self::TABLE);
+        foreach ($where as $field => $value) {
+            if (is_array($value)) {
+                $dbInstance->whereIn($field, $value);
+            } else {
+                $dbInstance->where($field, '=', $value);
+            }
+        }
+        $adminCount = $dbInstance->count();
+        return $adminCount;
+    }
+
+    /**
      * 定义admin表结构
      * @return array
      */

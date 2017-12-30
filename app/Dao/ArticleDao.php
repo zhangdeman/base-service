@@ -48,18 +48,21 @@ class ArticleDao extends BaseDao
      * @param $where
      * @param $limit
      * @param $offset
+     * @param $orderField
+     * @param $orderRule
+     * @return array
      */
     public static function getArticleList($where, $limit, $offset, $orderField, $orderRule)
     {
-        //$dbInstance = DB::table(self::TABLE);
-        /*foreach ($where as $field => $value) {
+        $dbInstance = DB::table(self::TABLE);
+        foreach ($where as $field => $value) {
             if (is_array($value)) {
                 $dbInstance->whereIn($field, $value);
             } else {
                 $dbInstance->where($field, '=', $value);
             }
-        }*/
-        $list = DB::table(self::TABLE)->where($where)->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
+        }
+        $list = DB::table(self::TABLE)->orderBy($orderField, $orderRule)->skip($offset)->take($limit)->get();
         return $list;
     }
 

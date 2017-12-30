@@ -106,3 +106,8 @@ Route::post('/permission/authAdminPermission', function (Request $request) {
     $instance = new \App\Http\Controllers\Permission\AuthAdminPermission();
     $instance->authPermission($request);
 });
+
+Route::get('/admin/getList', function (Request $request) {
+    $instance = new \App\Http\Controllers\Admin\GetAdminList();
+    $instance->getAdminList($request);
+});
